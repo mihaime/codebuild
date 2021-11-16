@@ -1,5 +1,7 @@
 version: 0.2
-        
+# this needs setting up in AWS -> CodeBuild -> monitor repo via Webhooks (no CD as there's no delivery/artefact)
+# the IAM role it will use needs access to AWS to create stuff..instances..new roles for avx..kms
+
 phases:
   install:
     on-failure: ABORT
@@ -25,13 +27,13 @@ phases:
     commands:
       - echo $Phase
       - |
-        if expr "${Phase}" : "PLAN" >/dev/null;
+        if expr "${Phase}" : "PLAN";
         then
           echo "Lanunching PLAN..."
           terraform plan -no-color -out=tfplan;
         fi
       - |
-        if expr "${Phase}" : "APPLY" >/dev/null;
+        if expr "${Phase}" : "APPLY";
         then
           echo "Building (APPLY)..."
           terraform plan -no-color -out=tfplan && terraform apply -no-color -auto-approve=true tfplan;
