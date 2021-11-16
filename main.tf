@@ -6,3 +6,7 @@ module "aviatrixcontroller" {
   ec2role           = "aviatrix-role-ec2"
   incoming_ssl_cidr = ["0.0.0.0/0"]
 }
+
+/*
+something
+*/
