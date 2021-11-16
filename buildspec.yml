@@ -25,20 +25,8 @@ phases:
   build:
     on-failure: ABORT
     commands:
-      - echo $Phase
-      - |
-        if expr "${Phase}" : "PLAN";
-        then
-          echo "Lanunching PLAN..."
-          export TF_LOG="TRACE";
-          terraform plan -no-color -out=tfplan;
-        fi
-      - |
-        if expr "${Phase}" : "APPLY";
-        then
-          echo "Building (APPLY)..."
-          terraform plan -no-color -out=tfplan && terraform apply -no-color -auto-approve=true tfplan;
-        fi
+      - echo "Launching PLAN & APPLY..."
+      - terraform plan -no-color -out=tfplan && terraform apply -no-color -auto-approve=true tfplan;
   post_build:
     on-failure: ABORT
     commands:
