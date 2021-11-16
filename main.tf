@@ -1,10 +1,10 @@
 /* IAM ROLES */
+/* Fetch Using: data.aws_ssm_parameter.awsctrlaccount.value */
 
 data "aws_ssm_parameter" "awsctrlaccount" {
   name = "cspaccount"
 }
 
-data.aws_ssm_parameter.awsctrlaccount.value
 
 module "iam_roles" {
   source = "github.com/AviatrixSystems/terraform-modules.git//aviatrix-controller-iam-roles?ref=terraform_0.14"
