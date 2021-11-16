@@ -30,8 +30,11 @@ phases:
         if expr "${Phase}" : "PLAN";
         then
           echo "Lanunching PLAN..."
+          ls -la
+          pwd
           terraform plan -no-color -out=tfplan;
         fi
+      - terraform plan
       - |
         if expr "${Phase}" : "APPLY";
         then
