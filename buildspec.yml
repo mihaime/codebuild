@@ -30,7 +30,7 @@ phases:
         if expr "${Phase}" : "PLAN";
         then
           echo "Lanunching PLAN..."
-          export TF_LOG="TRACE"
+          export TF_LOG="TRACE";
           terraform plan -no-color -out=tfplan;
         fi
       - |
