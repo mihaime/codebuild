@@ -4,25 +4,25 @@
 # aviatrix-role-ec2
 # aviatrix-role-app
 
+# IAM
+
 module "iam_roles" {
   source = "github.com/AviatrixSystems/terraform-modules.git//aviatrix-controller-iam-roles?ref=terraform_0.14"
 }
 
-# Create VPC
+# VPC, SSH Key, IGW, Subnets, CIDR - prereqsctrl.tf
 
-# Create Controller
-# Logs with CloudWatch?
-/*
-The AWS account ID where the Aviatrix Controller was/will be launched. This is only required if you are creating roles for the secondary account different from the account where controller was/will be launched. DO NOT use this parameter if this Terraform module is applied on the AWS account of your controller.
+# !!! BEFORE DEPLOYING CONTROLLER - Accept the terms and subscribe to the Aviatrix Controller in the AWS Marketplace.
+# https://aws.amazon.com/marketplace/pp?sku=zemc6exdso42eps9ki88l9za
 
-Same definition using als extra param this for the latter case:
-  external-controller-account-id = ""
-
-*/
-
-
-/* Fetch Using: data.aws_ssm_parameter.awsctrlaccount.value */
-
+module "aviatrixcontroller" {
+  source            = "github.com/AviatrixSystems/terraform-modules.git//aviatrix-controller-build?ref=terraform_0.14"
+  vpc               = aws_vpc.avtx_ctrl_vpc.vpc_id
+  subnet            = aws_subnet.avtx_ctrl_subnet.public_subnet_id
+  keypair           = module.avx_ctrl_key.key_name
+  ec2role           = module.iam-roles.aviatrix-role-ec2-name
+  incoming_ssl_cidr = ["0.0.0.0/0"]
+}
 
 data "aws_ssm_parameter" "awsctrlaccount" {
   name = "cspaccount"
