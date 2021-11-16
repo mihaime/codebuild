@@ -1,14 +1,6 @@
 /* Fetch Using: data.aws_ssm_parameter.awsctrlaccount.value */
 
 
-data "aws_ssm_parameter" "awsctrlcidr" {
-  name = "awesctrlcidr"
-}
-
-data "aws_ssm_parameter" "awsregion" {
-  name = "awesregion"
-}
-
 resource "aws_vpc" "avtx_ctrl_vpc" {
   cidr_block       = data.aws_ssm_parameter.awsctrlcidr.value
 

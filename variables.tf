@@ -1,5 +1,13 @@
 # Reusing the Parameter Store CIDR for the VPC to generate the local data structure - data.aws_ssm_parameter.awsctrlcidr.value
 
+data "aws_ssm_parameter" "awsctrlcidr" {
+  name = "awesctrlcidr"
+}
+
+data "aws_ssm_parameter" "awsregion" {
+  name = "awesregion"
+}
+
 data "aws_ssm_parameter" "type" {
   name = "awestype"
 }
@@ -15,3 +23,9 @@ locals {
   images_platinum = jsondecode(data.http.avx_iam_id.body).MeteredPlatinum
   ami_id          = data.aws_ssm_parameter.type.value == "BYOL" || data.aws_ssm_parameter.type.value == "byol"? local.images_byol[data.aws_region.current.name] : local.images_platinum[data.aws_region.current.name]
 }
+
+data http avx_iam_id {
+  url = "https://s3-us-west-2.amazonaws.com/aviatrix-download/AMI_ID/ami_id.json"
+  request_headers = {
+    "Accept" = "application/json"
+  }
