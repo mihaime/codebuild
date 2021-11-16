@@ -12,6 +12,7 @@ data "aws_ssm_parameter" "type" {
   name = "awestype"
 }
 
+
 locals {
 
   cidrbits      = tonumber(split("/", data.aws_ssm_parameter.awsctrlcidr.value)[1])
@@ -21,7 +22,7 @@ locals {
   subnet_zone_b     =  cidrsubnet(data.aws_ssm_parameter.awsctrlcidr.value, local.newbits, local.netnum - 1)
   images_byol     = jsondecode(data.http.avx_iam_id.body).BYOL
   images_platinum = jsondecode(data.http.avx_iam_id.body).MeteredPlatinum
-  ami_id          = data.aws_ssm_parameter.type.value == "BYOL" || data.aws_ssm_parameter.type.value == "byol"? local.images_byol[data.aws_region.current.name] : local.images_platinum[data.aws_region.current.name]
+  ami_id          = data.aws_ssm_parameter.type.value == "BYOL" || data.aws_ssm_parameter.type.value == "byol"? local.images_byol[data.aws_ssm_parameter.awsregion.value] : local.images_platinum[data.aws_ssm_parameter.awsregion.value]
 }
 
 data http avx_iam_id {
