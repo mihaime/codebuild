@@ -1,10 +1,4 @@
 /* IAM ROLES */
-/* Fetch Using: data.aws_ssm_parameter.awsctrlaccount.value */
-
-
-data "aws_ssm_parameter" "awsctrlaccount" {
-  name = "cspaccount"
-}
 
 # Creates
 # aviatrix-role-ec2
@@ -25,4 +19,12 @@ Same definition using als extra param this for the latter case:
   external-controller-account-id = ""
 
 */
+
+
+/* Fetch Using: data.aws_ssm_parameter.awsctrlaccount.value */
+
+
+data "aws_ssm_parameter" "awsctrlaccount" {
+  name = "cspaccount"
+}
 
