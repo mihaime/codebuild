@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.avtx_ctrl_vpc.id
 }
 
-resource "aws_subnet" "avtx_ctrl_subnet" {
+resource "aws_subnet" "avtx_ctrl_subnet_a" {
   availability_zone = "${data.aws_ssm_parameter.awsregion.value}a"
   vpc_id     = aws_vpc.avtx_ctrl_vpc.id
   cidr_block = local.subnet_zone_a
