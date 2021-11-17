@@ -53,9 +53,9 @@ data "aws_ssm_parameter" "aviatrix_password" {
 resource "aviatrix_account" "aws_account" {
   account_name       = "AWSMihai"
   cloud_type         = 1
-  aws_account_number = data.awsctrlaccount.value
+  aws_account_number = data.aws_ssm_parameter.awsctrlaccount.value
   aws_iam            = true
-  aws_role_app       = "arn:aws:iam::${data.awsctrlaccount.value}:role/${module.iam_roles.aviatrix-role-app-name}"
-  aws_role_ec2       = "arn:aws:iam::${data.awsctrlaccount.value}:role/${module.iam_roles.aviatrix-role-app-name}"
+  aws_role_app       = "arn:aws:iam::${data.aws_ssm_parameter.awsctrlaccount.value}:role/${module.iam_roles.aviatrix-role-app-name}"
+  aws_role_ec2       = "arn:aws:iam::${data.aws_ssm_parameter.awsctrlaccount.value}:role/${module.iam_roles.aviatrix-role-app-name}"
 }
 
