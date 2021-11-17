@@ -1,10 +1,8 @@
 /* IAM ROLES */
 
-# Creates
+# Creates IAM
 # aviatrix-role-ec2
 # aviatrix-role-app
-
-# IAM
 
 module "iam_roles" {
   source = "github.com/AviatrixSystems/terraform-modules.git//aviatrix-controller-iam-roles?ref=terraform_0.14"
