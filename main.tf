@@ -32,7 +32,7 @@ data "aws_ssm_parameter" "awsctrlaccount" {
   name = "cspaccount"
 }
 
-data "aws_ssm_parameter" "aviatrix_ctrl_ip" {
+resource "aws_ssm_parameter" "aviatrix_ctrl_ip" {
   name = "aviatrix_ctrl_eip"
   type = "String"
   value = module.aviatrixcontroller.public_ip
@@ -42,8 +42,8 @@ data "aws_ssm_parameter" "aviatrix_username" {
   name = "aviatrix_username"
 }
 
-#data "aws_ssm_parameter" "aviatrix_password" {
-#  name = "aviatrix_password"
-#  key_name  = 
-#}
+data "aws_ssm_parameter" "aviatrix_password" {
+  name = "aviatrix_password"
+  with_decryption = true
+}
 
