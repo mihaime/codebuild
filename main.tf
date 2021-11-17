@@ -56,6 +56,6 @@ resource "aviatrix_account" "aws_account" {
   aws_account_number = data.aws_ssm_parameter.awsctrlaccount.value
   aws_iam            = true
   aws_role_app       = "arn:aws:iam::${data.aws_ssm_parameter.awsctrlaccount.value}:role/${module.iam_roles.aviatrix-role-app-name}"
-  aws_role_ec2       = "arn:aws:iam::${data.aws_ssm_parameter.awsctrlaccount.value}:role/${module.iam_roles.aviatrix-role-app-name}"
+  aws_role_ec2       = "arn:aws:iam::${data.aws_ssm_parameter.awsctrlaccount.value}:role/${module.iam_roles.aviatrix-role-ec2-name}"
 }
 
