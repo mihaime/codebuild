@@ -78,7 +78,7 @@ data "aws_ssm_parameter" "awsspokecidr" {
 
 module "transit_aws_1" {
   source  = "terraform-aviatrix-modules/aws-transit/aviatrix"
-  version = "v4.0.2"
+  version = "v4.0.0"
 
   name = "TestTransit"
   cidr = data.aws_ssm_parameter.awstransitcidr.value
