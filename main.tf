@@ -22,6 +22,7 @@ module "aviatrixcontroller" {
   keypair           = module.avx_ctrl_key.key_pair_key_name
   ec2role           = module.iam_roles.aviatrix-role-ec2-name
   incoming_ssl_cidr = ["0.0.0.0/0"]
+  type              = MeteredPlatinumCoPilot
 }
 
 data "aws_ssm_parameter" "awsctrlaccount" {

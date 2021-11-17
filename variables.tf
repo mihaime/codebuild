@@ -32,10 +32,3 @@ data http avx_iam_id {
   }
 }
 
-# overwrite screw-up from the original repo lines 74 and 93
-
-variable type {
-  default     = "MeteredPlatinumCoPilot"
-  type        = string
-  description = "Type of billing, can be 'MeteredPlatinum', 'BYOL' or 'Custom'"
-}
