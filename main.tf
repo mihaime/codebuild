@@ -20,7 +20,7 @@ module "aviatrixcontroller" {
   vpc               = aws_vpc.avtx_ctrl_vpc.id
   subnet            = aws_subnet.avtx_ctrl_subnet_a.id
   keypair           = module.avx_ctrl_key.key_pair_key_name
-  ec2role           = module.iam-roles.aviatrix-role-ec2-name
+  ec2role           = module.iam_roles.aviatrix-role-ec2-name
   incoming_ssl_cidr = ["0.0.0.0/0"]
 }
 
