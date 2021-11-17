@@ -25,7 +25,18 @@ module "aviatrixcontroller" {
   type              = "MeteredPlatinumCopilot"
 }
 
+### ONBOARDING AWS ACCOUNT ONCE CONTROLLER IS UP ###
+
+## AWS ACCOUNT ID - prepopulated in AWS PS (param store)
 data "aws_ssm_parameter" "awsctrlaccount" {
   name = "cspaccount"
 }
+
+data "aws_ssm_parameter" "aviatrix_ctrl_ip" {
+  name = "aviatrix_ctrl_eip"
+  value = module.aviatrixcontroller.public_ip
+}
+
+
+
 
