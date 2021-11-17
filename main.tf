@@ -19,7 +19,7 @@ module "aviatrixcontroller" {
   source            = "github.com/AviatrixSystems/terraform-modules.git//aviatrix-controller-build?ref=terraform_0.14"
   vpc               = aws_vpc.avtx_ctrl_vpc.id
   subnet            = aws_subnet.avtx_ctrl_subnet_a.id
-  keypair           = module.avx_ctrl_key.key_name
+  keypair           = module.avx_ctrl_key.key_pair_key_name
   ec2role           = module.iam-roles.aviatrix-role-ec2-name
   incoming_ssl_cidr = ["0.0.0.0/0"]
 }
