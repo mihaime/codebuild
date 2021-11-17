@@ -84,6 +84,7 @@ module "transit_aws_1" {
   cidr = data.aws_ssm_parameter.awstransitcidr.value
   region = data.aws_ssm_parameter.awsregion.value
   account = data.aws_ssm_parameter.awsaccountname.value
+  gov = false
 }
 
 # 6) CREATE SPOKE & ATTACH
