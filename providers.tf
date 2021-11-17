@@ -1,5 +1,5 @@
 provider "aviatrix" {
-  controller_ip = data.aws_ssm_parameter.aviatrix_ctrl_ip.value
+  controller_ip = aws_ssm_parameter.aviatrix_ctrl_ip
   username      = data.aws_ssm_parameter.aviatrix_username.value
   password      = data.aws_ssm_parameter.aviatrix_password.value
 }
