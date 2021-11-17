@@ -95,6 +95,6 @@ module "spoke_aws_1" {
   cidr            = data.aws_ssm_parameter.awsspokecidr.value
   region          = data.aws_ssm_parameter.awsregion.value
   account         = data.aws_ssm_parameter.awsaccountname.value
-  transit_gw      = module.transit_aws_1.transit_gateway.name
+  transit_gw      = module.transit_aws_1.transit_gateway.gw_name
 }
 
