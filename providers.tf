@@ -1,10 +1,8 @@
-/*
 provider "aviatrix" {
-  controller_ip = var.aviatrix_controller_ip
-  username      = var.aviatrix_admin_account
-  password      = var.aviatrix_admin_password
+  controller_ip = data.aviatrix_ctrl_ip.value
+  username      = data.aviatrix_username.value
+  password      = data.aviatrix_password.value
 }
-*/
 
 provider "aws" {
   region = "eu-west-3"
