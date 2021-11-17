@@ -98,3 +98,4 @@ module "spoke_aws_1" {
   transit_gw      = module.transit_aws_1.transit_gateway.gw_name
 }
 
+# THE END
