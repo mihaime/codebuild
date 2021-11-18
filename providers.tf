@@ -5,5 +5,5 @@ provider "aviatrix" {
 }
 
 provider "aws" {
-  region = "eu-west-3"
+  region = data.aws_ssm_parameter.awsregion.value
 }

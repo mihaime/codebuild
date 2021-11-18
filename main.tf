@@ -76,22 +76,25 @@ data "aws_ssm_parameter" "awsspokecidr" {
   name = "awesspokecidr"
 }
 
+## Name appends to avx-<name>-transit
 module "transit_aws_1" {
   source  = "terraform-aviatrix-modules/aws-transit/aviatrix"
   version = "v4.0.0"
 
-  name = "TestTransit"
+  name = "T1"
   cidr = data.aws_ssm_parameter.awstransitcidr.value
   region = data.aws_ssm_parameter.awsregion.value
   account = data.aws_ssm_parameter.awsaccountname.value
 }
 
 # 6) CREATE SPOKE & ATTACH
+## Name appeds to avx-<name>-spoke
+
 module "spoke_aws_1" {
   source  = "terraform-aviatrix-modules/aws-spoke/aviatrix"
   version = "4.0.3"
 
-  name            = "TestSpoke"
+  name            = "S1"
   cidr            = data.aws_ssm_parameter.awsspokecidr.value
   region          = data.aws_ssm_parameter.awsregion.value
   account         = data.aws_ssm_parameter.awsaccountname.value
